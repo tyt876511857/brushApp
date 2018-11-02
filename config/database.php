@@ -8,20 +8,21 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
+use think\facade\Env;
 
 return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => '127.0.0.1',
+    'hostname'        => Env::get('db.hostname'),
     // 数据库名
-    'database'        => '',
+    'database'        => Env::get('db.database'),
     // 用户名
-    'username'        => 'root',
+    'username'        => Env::get('db.username'),
     // 密码
-    'password'        => '',
+    'password'        => Env::get('db.password'),
     // 端口
-    'hostport'        => '',
+    'hostport'        => Env::get('db.hostport'),
     // 连接dsn
     'dsn'             => '',
     // 数据库连接参数
@@ -29,7 +30,7 @@ return [
     // 数据库编码默认采用utf8
     'charset'         => 'utf8',
     // 数据库表前缀
-    'prefix'          => '',
+    'prefix'          => Env::get('db.prefix'),
     // 数据库调试模式
     'debug'           => true,
     // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
@@ -40,8 +41,6 @@ return [
     'master_num'      => 1,
     // 指定从服务器序号
     'slave_no'        => '',
-    // 自动读取主库数据
-    'read_master'     => false,
     // 是否严格检查字段是否存在
     'fields_strict'   => true,
     // 数据集返回类型
@@ -57,7 +56,7 @@ return [
     // Query类
     'query'           => '\\think\\db\\Query',
     // 是否需要断线重连
-    'break_reconnect' => false,
+    'break_reconnect' => true,
     // 断线标识字符串
     'break_match_str' => [],
 ];
